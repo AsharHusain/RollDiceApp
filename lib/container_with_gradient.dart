@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:roll_dice_app/diceroller.dart';
+import 'package:roll_dice_app/styled_text.dart';
+import 'dart:math';
+
 class ContainerWithGradient extends StatelessWidget {
-  const ContainerWithGradient({super.key});
+  ContainerWithGradient(this.clr, {super.key});
+  List<Color> clr;
+
   @override
   Widget build(context) {
     return Container(
@@ -8,18 +14,10 @@ class ContainerWithGradient extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.bottomLeft,
           end: Alignment.topRight,
-          colors: [
-            const Color.fromARGB(255, 30, 149, 247),
-            const Color.fromARGB(255, 1, 70, 126),
-          ],
+          colors: clr,
         ),
       ),
-      child: Center(
-        child: Text(
-          "Roll Dice app",
-          style: TextStyle(color: Colors.pink, fontSize: 35),
-        ),
-      ),
+      child: Center(child: DiceRoller()),
     );
   }
 }
